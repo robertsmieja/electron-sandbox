@@ -27,11 +27,12 @@
  */
 
 import "./index.css"
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-//@ts-ignore
-import * as native from "../native/index.node"
+import React from "react"
+import ReactDOM from "react-dom"
+import App from "./App"
 
 console.log(
   '👋 This message is being logged by "renderer.js", included via webpack'
 )
-console.log(native.hello())
+
+ReactDOM.render(<App />, document.getElementById("app-root"));

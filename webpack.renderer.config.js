@@ -12,6 +12,9 @@ module.exports = {
     rules,
   },
   plugins: plugins,
+  optimization: {
+    noEmitOnErrors: true,
+  },
   resolve: {
     extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".css"],
   },
