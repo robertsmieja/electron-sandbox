@@ -92,3 +92,6 @@ out/
 native/target
 native/index.node
 native/artifacts.json
+
+# CLion/IDEA
+.idea/

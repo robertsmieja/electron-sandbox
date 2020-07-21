@@ -1,7 +1,5 @@
 import { app, BrowserWindow } from "electron"
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-//@ts-ignore
-import * as native from "../native/index.node"
+import native from "../native/"
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any
 
