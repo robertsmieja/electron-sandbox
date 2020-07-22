@@ -1,21 +1,30 @@
-const rules = require("./webpack.rules")
-const plugins = require("./webpack.plugins")
+const common = require("./webpack.common")
+const babelRendererConfig = require("./babel.renderer.config")
+const { merge } = require("webpack-merge")
 
-rules.push({
-  test: /\.css$/,
-  use: [{ loader: "style-loader" }, { loader: "css-loader" }],
-})
-
-module.exports = {
+module.exports = merge(common, {
   devtool: "cheap-module-eval-source-map",
   module: {
-    rules,
+    rules: [
+      {
+        test: /\.m?[jt]sx?$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: "babel-loader",
+          options: babelRendererConfig,
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+      },
+    ],
   },
-  plugins: plugins,
   optimization: {
     noEmitOnErrors: true,
   },
   resolve: {
     extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".css"],
   },
-}
+  target: "electron-renderer",
+})
